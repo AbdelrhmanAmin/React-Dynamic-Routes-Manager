@@ -5,7 +5,7 @@
 Problem + Motivation:
 https://www.loom.com/share/ccd1e26c1d394203a301f2a2f99ee00a
 
-Explaination:
+Explanation:
 https://www.loom.com/share/869567404a3c4a739014af6f4b398a61
 
 The problem is that I did have dynamic pages with params like `:id`, `:page`...etc
