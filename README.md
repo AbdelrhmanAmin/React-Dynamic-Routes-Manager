@@ -2,7 +2,7 @@
 404 error boundary for Dynamic routes or I'd rather say: Server-side-like fetching before entering a route.
 
 
-Problem:
+Problem + Motivation:
 https://www.loom.com/share/ccd1e26c1d394203a301f2a2f99ee00a
 
 The problem is that I did have dynamic pages with params like `:id`, `:page`...etc
