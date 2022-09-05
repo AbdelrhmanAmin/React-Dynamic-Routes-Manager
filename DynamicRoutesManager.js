@@ -12,7 +12,7 @@ export const DynamicRouteManager = ({ children, fetcher }) => {
   const { pathname } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [isValid, setIsValid] = useState(false);
-  const isRouteValid = useCallback(async () => {
+  const fetchToValidateRoute = useCallback(async () => {
     setIsLoading(true);
     const req = await fetcher(params);
     flags.current = {
@@ -27,7 +27,7 @@ export const DynamicRouteManager = ({ children, fetcher }) => {
     setIsValid(true);
   }, []);
   useEffect(() => {
-    isRouteValid();
+    fetchToValidateRoute();
   }, []);
 
   useEffect(() => {
