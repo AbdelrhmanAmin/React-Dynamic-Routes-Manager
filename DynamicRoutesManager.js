@@ -3,17 +3,16 @@
 // So I decided to create a wrapper component to manager to fetch the server and check  if the id is valid. You can tweak this code to your own needs..
 
 export const DynamicRouteManager = ({ children, fetcher }) => {
+  const invalidRoutesRef = useRef([])
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [isValid, setIsValid] = useState(false);
   const fetchToValidateRoute = async () => {
     setIsLoading(true);
     const req = await fetcher(params);
-    setIsLoading(false);
     if (!req.ok) {
-      return setIsValid(false);
+      invalidRoutesRef.current.push(pathname)
     }
-    setIsValid(true);
+    setIsLoading(false);
   };
   useEffect(() => {
     fetchToValidateRoute();
@@ -22,7 +21,7 @@ export const DynamicRouteManager = ({ children, fetcher }) => {
   if (isLoading) {
     return <LoadingScreen />;
   }
-  if (!isValid) {
+  if (invalidRoutesRef.current.includes(pathname)) {
     return <ErrorPage />;
   }
   return children;
